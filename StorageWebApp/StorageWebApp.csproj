@@ -20,4 +20,8 @@
     <ProjectReference Include="..\StorageModels\StorageModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="data\" />
+  </ItemGroup>
+
 </Project>

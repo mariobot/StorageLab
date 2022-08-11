@@ -1,16 +1,16 @@
 ﻿@model StorageModels.StorageInformation
 
 @{
-    ViewData["Title"] = "Storage";
+    ViewData["Title"] = "UploadFile";
 }
 
-<h1>Add Storage Information</h1>
+<h1>UploadFile</h1>
 
-<h4></h4>
+<h4>StorageInformation</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="UploadFilePost">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ConnectionString" class="control-label"></label>
@@ -29,15 +29,15 @@
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Submit Information" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
+<br />
 <div>
-    <br />
-    <a asp-controller="Storage" asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -19,18 +19,41 @@ namespace StorageWebApp.Controllers
         }
 
         // GET: StorageController/Create
-        public ActionResult Create()
+        public ActionResult CreateContainer()
+        {
+            return View();
+        }
+
+        public ActionResult UploadFile()
         {
             return View();
         }
 
         // POST: StorageController/Create
-        [HttpPost]
+        [HttpPost("CreateContainerPost")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(StorageInformation storageInfo)
+        public async Task<ActionResult> CreateContainerPost(StorageInformation storageInfo)
         {
             try
             {
+                StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
+                await storageService.CreateContainerAsync(storageInfo);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost("UploadFilePost")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> UploadFilePost(StorageInformation storageInfo)
+        {
+            try
+            {
+                StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
+                await storageService.UploadAsync(storageInfo);
                 return RedirectToAction(nameof(Index));
             }
             catch
