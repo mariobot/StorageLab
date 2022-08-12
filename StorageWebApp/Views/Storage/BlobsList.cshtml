@@ -1,0 +1,35 @@
+﻿@using Azure.Storage.Blobs.Models
+@model Azure.Pageable<BlobItem>;
+
+@{
+    ViewData["Title"] = "Storage";
+}
+
+<h1>Blobs list</h1>
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <table>
+            <tr>
+                <td></td>
+            </tr>
+            @foreach(BlobItem blob in Model)
+            {
+                <tr>
+                    <td>@blob.Name</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div>
+    <br />
+    <a asp-controller="Home" asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
