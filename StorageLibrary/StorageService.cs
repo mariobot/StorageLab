@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 using StorageModels;
 
 namespace StorageLibrary
@@ -66,5 +67,29 @@ namespace StorageLibrary
             await blobClient.UploadAsync(localFilePath, true);
 
         }
+
+        public async Task<Azure.Pageable<BlobItem>> ListBlobsAsync(StorageInformation storageInformation)
+        {
+            // Create the blobClient
+            BlobServiceClient blobServiceClient = new BlobServiceClient(storageInformation.ConnectionString);
+
+            // Create the container and return a container client object
+            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(storageInformation.ContainerName);
+
+            return containerClient.GetBlobs();
+        }
+
+        public async Task DeleteContainerAsync(StorageInformation storageInformation)
+        {   
+            // Create the blobClient
+            BlobServiceClient blobServiceClient = new BlobServiceClient(storageInformation.ConnectionString);
+
+            // Create the container and return a container client object
+            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(storageInformation.ContainerName);
+
+            await containerClient.DeleteAsync();
+        }
+
+
     }
 }

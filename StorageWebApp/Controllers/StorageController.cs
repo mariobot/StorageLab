@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure.Storage.Blobs.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StorageModels;
 
@@ -6,14 +7,13 @@ namespace StorageWebApp.Controllers
 {
     public class StorageController : Controller
     {
+        public const string SessionConnectionString = "_connstring";
+        public const string SessionContainer = "_container";
+
+        public StorageInformation memoryStorageInformation { get; set; }
+
         // GET: StorageController
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: StorageController/Details/5
-        public ActionResult Details(int id)
         {
             return View();
         }
@@ -29,6 +29,22 @@ namespace StorageWebApp.Controllers
             return View();
         }
 
+        public ActionResult DeleteContainer()
+        {
+            return View();
+        }
+
+        public async Task<ActionResult> BlobsList()
+        {
+            StorageInformation storageInformation = new StorageInformation() { 
+                ConnectionString = HttpContext.Session.GetString(SessionContainer),
+                ContainerName = HttpContext.Session.GetString(SessionContainer),
+            };
+            StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
+            Azure.Pageable<BlobItem> blobList = await storageService.ListBlobsAsync(storageInformation);
+            return View(blobList);
+        }
+
         // POST: StorageController/Create
         [HttpPost("CreateContainerPost")]
         [ValidateAntiForgeryToken]
@@ -36,6 +52,10 @@ namespace StorageWebApp.Controllers
         {
             try
             {
+                HttpContext.Session.SetString(SessionConnectionString, storageInfo.ConnectionString);
+                HttpContext.Session.SetString(SessionContainer, storageInfo.ContainerName);
+
+                memoryStorageInformation = storageInfo;
                 StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
                 await storageService.CreateContainerAsync(storageInfo);
                 return RedirectToAction(nameof(Index));
@@ -52,8 +72,26 @@ namespace StorageWebApp.Controllers
         {
             try
             {
+                memoryStorageInformation = storageInfo;
                 StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
                 await storageService.UploadAsync(storageInfo);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost("DeleteContainer")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteContainer(StorageInformation storageInfo)
+        {
+            try
+            {
+                memoryStorageInformation = storageInfo;
+                StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
+                await storageService.DeleteContainerAsync(storageInfo);
                 return RedirectToAction(nameof(Index));
             }
             catch
