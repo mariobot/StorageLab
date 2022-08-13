@@ -48,7 +48,7 @@ namespace StorageWebApp.Controllers
             };
             Azure.Pageable<BlobItem> blobList = await storageService.ListBlobsAsync(storageInformation);
             var result = blobList;
-            return View(blobList);*/
+            return View(blobList);
         }
 
         // POST: StorageController/Create
@@ -58,7 +58,7 @@ namespace StorageWebApp.Controllers
         {
             try
             {
-                /*
+                
                 HttpContext.Session.SetString(SessionConnectionString, storageInfo.ConnectionString);
                 HttpContext.Session.SetString(SessionContainer, storageInfo.ContainerName);
 
@@ -66,6 +66,7 @@ namespace StorageWebApp.Controllers
                 StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
                 await storageService.CreateContainerAsync(storageInfo);
                 return RedirectToPage("BlobsList");
+
             }
             catch
             {
