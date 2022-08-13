@@ -9186,35 +9186,42 @@
     ]
   },
   "packageFolders": {
-    "/var/nuget": {}
+    "C:\\Users\\mario\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/workspaces/StorageLab/StorageWebApp/StorageWebApp.csproj",
+      "projectUniqueName": "C:\\Desarrollo\\StorageLab\\StorageWebApp\\StorageWebApp.csproj",
       "projectName": "StorageWebApp",
-      "projectPath": "/workspaces/StorageLab/StorageWebApp/StorageWebApp.csproj",
-      "packagesPath": "/var/nuget",
-      "outputPath": "/workspaces/StorageLab/StorageWebApp/obj/",
+      "projectPath": "C:\\Desarrollo\\StorageLab\\StorageWebApp\\StorageWebApp.csproj",
+      "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
+      "outputPath": "C:\\Desarrollo\\StorageLab\\StorageWebApp\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "/home/codespace/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.myget.org/F/natcp/auth/727291ab-5307-45eb-9b1e-9bcc5ea5cb18/api/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/workspaces/StorageLab/StorageLibrary/StorageLibrary.csproj": {
-              "projectPath": "/workspaces/StorageLab/StorageLibrary/StorageLibrary.csproj"
+            "C:\\Desarrollo\\StorageLab\\StorageLibrary\\StorageLibrary.csproj": {
+              "projectPath": "C:\\Desarrollo\\StorageLab\\StorageLibrary\\StorageLibrary.csproj"
             },
-            "/workspaces/StorageLab/StorageModels/StorageModels.csproj": {
-              "projectPath": "/workspaces/StorageLab/StorageModels/StorageModels.csproj"
+            "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj": {
+              "projectPath": "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj"
             }
           }
         }
@@ -9272,7 +9279,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/opt/dotnet/6.0.301/sdk/6.0.301/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
