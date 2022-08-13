@@ -1,11 +1,11 @@
-﻿using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StorageModels;
 
 namespace StorageWebApp.Controllers
 {
-    public class StorageController : Controller
+    public class QueueController : Controller
     {
         public const string SessionConnectionString = "_connstring";
         public const string SessionContainer = "_container";
@@ -38,7 +38,7 @@ namespace StorageWebApp.Controllers
         {
             
 
-            string conn = HttpContext.Session.GetString(SessionConnectionString).ToString();
+            string conn = HttpContext.Session.GetString(SessionContainer).ToString();
             string container = HttpContext.Session.GetString(SessionContainer).ToString();
             StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
             StorageInformation storageInformation = new StorageInformation()
@@ -48,7 +48,7 @@ namespace StorageWebApp.Controllers
             };
             Azure.Pageable<BlobItem> blobList = await storageService.ListBlobsAsync(storageInformation);
             var result = blobList;
-            return View(blobList);*/
+            return View(blobList);
         }
 
         // POST: StorageController/Create
@@ -58,14 +58,13 @@ namespace StorageWebApp.Controllers
         {
             try
             {
-                /*
                 HttpContext.Session.SetString(SessionConnectionString, storageInfo.ConnectionString);
                 HttpContext.Session.SetString(SessionContainer, storageInfo.ContainerName);
 
                 memoryStorageInformation = storageInfo;
                 StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
                 await storageService.CreateContainerAsync(storageInfo);
-                return RedirectToPage("BlobsList");
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
