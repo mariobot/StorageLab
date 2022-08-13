@@ -9,12 +9,13 @@
 <h4></h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="CreateContainerPost">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ConnectionString" class="control-label"></label>
-                <input asp-for="ConnectionString" class="form-control" />
+                <textarea maxlength="4000" type="url" asp-for="ConnectionString" class="form-control" />
+                <textarea class="form-control" id="textAreaExample1" rows="8"></textarea>
                 <span asp-validation-for="ConnectionString" class="text-danger"></span>
             </div>
             <div class="form-group">

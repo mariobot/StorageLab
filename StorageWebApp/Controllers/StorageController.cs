@@ -36,12 +36,18 @@ namespace StorageWebApp.Controllers
 
         public async Task<ActionResult> BlobsList()
         {
-            StorageInformation storageInformation = new StorageInformation() { 
-                ConnectionString = HttpContext.Session.GetString(SessionContainer),
-                ContainerName = HttpContext.Session.GetString(SessionContainer),
-            };
+            
+
+            string conn = HttpContext.Session.GetString(SessionContainer).ToString();
+            string container = HttpContext.Session.GetString(SessionContainer).ToString();
             StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
+            StorageInformation storageInformation = new StorageInformation()
+            {
+                ConnectionString = conn,
+                ContainerName = container,
+            };
             Azure.Pageable<BlobItem> blobList = await storageService.ListBlobsAsync(storageInformation);
+            var result = blobList;
             return View(blobList);
         }
 

@@ -70,13 +70,22 @@ namespace StorageLibrary
 
         public async Task<Azure.Pageable<BlobItem>> ListBlobsAsync(StorageInformation storageInformation)
         {
-            // Create the blobClient
-            BlobServiceClient blobServiceClient = new BlobServiceClient(storageInformation.ConnectionString);
+            try
+            {
+                // Create the blobClient
+                BlobServiceClient blobServiceClient = new BlobServiceClient(storageInformation.ConnectionString);
 
-            // Create the container and return a container client object
-            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(storageInformation.ContainerName);
+                // Create the container and return a container client object
+                BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(storageInformation.ContainerName);
 
-            return containerClient.GetBlobs();
+                return containerClient.GetBlobs();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
         }
 
         public async Task DeleteContainerAsync(StorageInformation storageInformation)
