@@ -5,9 +5,15 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageWebApp", "StorageWebApp\StorageWebApp.csproj", "{25A2B726-6AA8-4BF2-BB15-4F6B787B9B39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageModels", "StorageModels\StorageModels.csproj", "{F500B3DB-6433-4ADA-8852-9B7722320307}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageModels", "StorageModels\StorageModels.csproj", "{F500B3DB-6433-4ADA-8852-9B7722320307}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageLibrary", "StorageLibrary\StorageLibrary.csproj", "{12BC4877-732D-485C-9B50-179568C3D491}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageLibrary", "StorageLibrary\StorageLibrary.csproj", "{12BC4877-732D-485C-9B50-179568C3D491}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{2174E3CC-4087-4056-9F38-D6FC3143C436}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{5F7908D3-56F2-4961-8467-F3F7811967BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppFiles", "WpfAppFiles\WpfAppFiles.csproj", "{E1D46D3C-7174-4E9D-8DD8-F619F0C25ACC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +33,16 @@ Global
 		{12BC4877-732D-485C-9B50-179568C3D491}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12BC4877-732D-485C-9B50-179568C3D491}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12BC4877-732D-485C-9B50-179568C3D491}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D46D3C-7174-4E9D-8DD8-F619F0C25ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D46D3C-7174-4E9D-8DD8-F619F0C25ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D46D3C-7174-4E9D-8DD8-F619F0C25ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D46D3C-7174-4E9D-8DD8-F619F0C25ACC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1D46D3C-7174-4E9D-8DD8-F619F0C25ACC} = {5F7908D3-56F2-4961-8467-F3F7811967BE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B6368E4-4355-41BF-9072-CD8A843705FF}
