@@ -37,7 +37,7 @@ namespace StorageWebApp.Controllers
         public async Task<ActionResult> BlobsList()
         {
             
-
+            /*
             string conn = HttpContext.Session.GetString(SessionContainer).ToString();
             string container = HttpContext.Session.GetString(SessionContainer).ToString();
             StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
@@ -48,7 +48,7 @@ namespace StorageWebApp.Controllers
             };
             Azure.Pageable<BlobItem> blobList = await storageService.ListBlobsAsync(storageInformation);
             var result = blobList;
-            return View(blobList);
+            return View(blobList);*/
         }
 
         // POST: StorageController/Create
@@ -58,13 +58,15 @@ namespace StorageWebApp.Controllers
         {
             try
             {
+                /*
                 HttpContext.Session.SetString(SessionConnectionString, storageInfo.ConnectionString);
                 HttpContext.Session.SetString(SessionContainer, storageInfo.ContainerName);
 
                 memoryStorageInformation = storageInfo;
                 StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
                 await storageService.CreateContainerAsync(storageInfo);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));*/
+                return null;
             }
             catch
             {

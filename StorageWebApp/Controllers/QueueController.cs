@@ -5,7 +5,7 @@ using StorageModels;
 
 namespace StorageWebApp.Controllers
 {
-    public class StorageController : Controller
+    public class QueueController : Controller
     {
         public const string SessionConnectionString = "_connstring";
         public const string SessionContainer = "_container";
