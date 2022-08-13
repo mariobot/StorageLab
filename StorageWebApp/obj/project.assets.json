@@ -9192,11 +9192,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Desarrollo\\StorageLab\\StorageWebApp\\StorageWebApp.csproj",
+      "projectUniqueName": "c:\\Desarrollo\\StorageLab\\StorageWebApp\\StorageWebApp.csproj",
       "projectName": "StorageWebApp",
-      "projectPath": "C:\\Desarrollo\\StorageLab\\StorageWebApp\\StorageWebApp.csproj",
+      "projectPath": "c:\\Desarrollo\\StorageLab\\StorageWebApp\\StorageWebApp.csproj",
       "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
-      "outputPath": "C:\\Desarrollo\\StorageLab\\StorageWebApp\\obj\\",
+      "outputPath": "c:\\Desarrollo\\StorageLab\\StorageWebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -9217,11 +9217,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Desarrollo\\StorageLab\\StorageLibrary\\StorageLibrary.csproj": {
-              "projectPath": "C:\\Desarrollo\\StorageLab\\StorageLibrary\\StorageLibrary.csproj"
+            "c:\\Desarrollo\\StorageLab\\StorageLibrary\\StorageLibrary.csproj": {
+              "projectPath": "c:\\Desarrollo\\StorageLab\\StorageLibrary\\StorageLibrary.csproj"
             },
-            "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj": {
-              "projectPath": "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj"
+            "c:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj": {
+              "projectPath": "c:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj"
             }
           }
         }
