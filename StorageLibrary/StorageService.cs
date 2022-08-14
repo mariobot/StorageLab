@@ -7,7 +7,7 @@ using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using StorageModels;
 
-namespace StorageLibrary
+namespace Library
 {
     public class StorageService
     {

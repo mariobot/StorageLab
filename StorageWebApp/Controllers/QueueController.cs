@@ -36,19 +36,7 @@ namespace StorageWebApp.Controllers
 
         public async Task<ActionResult> BlobsList()
         {
-            
-
-            string conn = HttpContext.Session.GetString(SessionContainer).ToString();
-            string container = HttpContext.Session.GetString(SessionContainer).ToString();
-            StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
-            StorageInformation storageInformation = new StorageInformation()
-            {
-                ConnectionString = conn,
-                ContainerName = container,
-            };
-            Azure.Pageable<BlobItem> blobList = await storageService.ListBlobsAsync(storageInformation);
-            var result = blobList;
-            return View(blobList);
+            return null;
         }
 
         // POST: StorageController/Create
@@ -61,10 +49,7 @@ namespace StorageWebApp.Controllers
                 HttpContext.Session.SetString(SessionConnectionString, storageInfo.ConnectionString);
                 HttpContext.Session.SetString(SessionContainer, storageInfo.ContainerName);
 
-                memoryStorageInformation = storageInfo;
-                StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
-                await storageService.CreateContainerAsync(storageInfo);
-                return RedirectToAction(nameof(Index));
+                return null;
             }
             catch
             {
@@ -78,10 +63,7 @@ namespace StorageWebApp.Controllers
         {
             try
             {
-                memoryStorageInformation = storageInfo;
-                StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
-                await storageService.UploadAsync(storageInfo);
-                return RedirectToAction(nameof(Index));
+                return null;
             }
             catch
             {
@@ -94,10 +76,7 @@ namespace StorageWebApp.Controllers
         public async Task<ActionResult> DeleteContainer(StorageInformation storageInfo)
         {
             try
-            {
-                memoryStorageInformation = storageInfo;
-                StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
-                await storageService.DeleteContainerAsync(storageInfo);
+            {   
                 return RedirectToAction(nameof(Index));
             }
             catch

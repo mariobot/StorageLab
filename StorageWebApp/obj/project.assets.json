@@ -20,6 +20,19 @@
           "lib/net5.0/Azure.Core.dll": {}
         }
       },
+      "Azure.Data.Tables/12.6.1": {
+        "type": "package",
+        "dependencies": {
+          "Azure.Core": "1.25.0",
+          "System.Text.Json": "4.7.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Azure.Data.Tables.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Azure.Data.Tables.dll": {}
+        }
+      },
       "Azure.Storage.Blobs/12.13.0": {
         "type": "package",
         "dependencies": {
@@ -2944,23 +2957,28 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "StorageLibrary/1.0.0": {
+      "Library/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Azure.Data.Tables": "12.6.1",
           "Azure.Storage.Blobs": "12.13.0",
           "StorageModels": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/StorageLibrary.dll": {}
+          "bin/placeholder/Library.dll": {}
         },
         "runtime": {
-          "bin/placeholder/StorageLibrary.dll": {}
+          "bin/placeholder/Library.dll": {}
         }
       },
       "StorageModels/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Azure.Core": "1.25.0",
+          "Azure.Data.Tables": "12.6.1"
+        },
         "compile": {
           "bin/placeholder/StorageModels.dll": {}
         },
@@ -2991,6 +3009,22 @@
         "lib/netcoreapp2.1/Azure.Core.xml",
         "lib/netstandard2.0/Azure.Core.dll",
         "lib/netstandard2.0/Azure.Core.xml"
+      ]
+    },
+    "Azure.Data.Tables/12.6.1": {
+      "sha512": "EnbcshkRrDHlBGz6LcFlfDVOtd8P+atSREfStLzjnzzIZXY+N6xPldtPQPVda2s93ENdoE9oW0azTyju2ek3Ag==",
+      "type": "package",
+      "path": "azure.data.tables/12.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "CHANGELOG.md",
+        "README.md",
+        "azure.data.tables.12.6.1.nupkg.sha512",
+        "azure.data.tables.nuspec",
+        "azureicon.png",
+        "lib/netstandard2.0/Azure.Data.Tables.dll",
+        "lib/netstandard2.0/Azure.Data.Tables.xml"
       ]
     },
     "Azure.Storage.Blobs/12.13.0": {
@@ -9162,10 +9196,10 @@
         "system.xml.xdocument.nuspec"
       ]
     },
-    "StorageLibrary/1.0.0": {
+    "Library/1.0.0": {
       "type": "project",
-      "path": "../StorageLibrary/StorageLibrary.csproj",
-      "msbuildProject": "../StorageLibrary/StorageLibrary.csproj"
+      "path": "../StorageLibrary/Library.csproj",
+      "msbuildProject": "../StorageLibrary/Library.csproj"
     },
     "StorageModels/1.0.0": {
       "type": "project",
@@ -9179,8 +9213,8 @@
       "Azure.Storage.Common >= 12.12.0",
       "Azure.Storage.Files.Shares >= 12.11.0",
       "Azure.Storage.Queues >= 12.11.0",
+      "Library >= 1.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.8",
-      "StorageLibrary >= 1.0.0",
       "StorageModels >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.3.0"
     ]
@@ -9217,8 +9251,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Desarrollo\\StorageLab\\StorageLibrary\\StorageLibrary.csproj": {
-              "projectPath": "C:\\Desarrollo\\StorageLab\\StorageLibrary\\StorageLibrary.csproj"
+            "C:\\Desarrollo\\StorageLab\\StorageLibrary\\Library.csproj": {
+              "projectPath": "C:\\Desarrollo\\StorageLab\\StorageLibrary\\Library.csproj"
             },
             "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj": {
               "projectPath": "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj"

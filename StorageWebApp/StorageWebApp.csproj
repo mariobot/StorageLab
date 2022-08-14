@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StorageLibrary\StorageLibrary.csproj" />
+    <ProjectReference Include="..\StorageLibrary\Library.csproj" />
     <ProjectReference Include="..\StorageModels\StorageModels.csproj" />
   </ItemGroup>
 

@@ -40,7 +40,7 @@ namespace StorageWebApp.Controllers
 
             string conn = HttpContext.Session.GetString(SessionConnectionString).ToString();
             string container = HttpContext.Session.GetString(SessionContainer).ToString();
-            StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
+            Library.StorageService storageService = new Library.StorageService();
             StorageInformation storageInformation = new StorageInformation()
             {
                 ConnectionString = conn,
@@ -63,7 +63,7 @@ namespace StorageWebApp.Controllers
                 HttpContext.Session.SetString(SessionContainer, storageInfo.ContainerName);
 
                 memoryStorageInformation = storageInfo;
-                StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
+                Library.StorageService storageService = new Library.StorageService();
                 await storageService.CreateContainerAsync(storageInfo);
                 return RedirectToPage("BlobsList");
 
@@ -81,7 +81,7 @@ namespace StorageWebApp.Controllers
             try
             {
                 memoryStorageInformation = storageInfo;
-                StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
+                Library.StorageService storageService = new Library.StorageService();
                 await storageService.UploadAsync(storageInfo);
                 return RedirectToAction(nameof(Index));
             }
@@ -98,7 +98,7 @@ namespace StorageWebApp.Controllers
             try
             {
                 memoryStorageInformation = storageInfo;
-                StorageLibrary.StorageService storageService = new StorageLibrary.StorageService();
+                Library.StorageService storageService = new Library.StorageService();
                 await storageService.DeleteContainerAsync(storageInfo);
                 return RedirectToAction(nameof(Index));
             }
