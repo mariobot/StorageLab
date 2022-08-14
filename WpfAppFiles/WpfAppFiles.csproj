@@ -8,7 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="regions-small-be724495.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Azure.Storage.Files.Shares" Version="12.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="regions-small-be724495.png" />
   </ItemGroup>
 
 </Project>

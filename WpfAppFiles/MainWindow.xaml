@@ -8,7 +8,12 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Image x:Name="back" HorizontalAlignment="Left" Height="100" Margin="69,44,0,0" VerticalAlignment="Top" Width="100" Source="{Binding ActualHeight, ElementName=back, Mode=OneWay}"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="244,83,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="49,24,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="139,24,0,0" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="236,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.194,-0.255"/>
+        <Image HorizontalAlignment="Left" Height="200" Margin="368,0,0,0" VerticalAlignment="Top" Width="600" Source="/regions-small-be724495.png"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="400,217,10,10"/>
+        <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,217,439,0"/>
 
     </Grid>
 </Window>
