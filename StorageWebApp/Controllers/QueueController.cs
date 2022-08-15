@@ -40,7 +40,7 @@ namespace StorageWebApp.Controllers
         }
 
         // POST: StorageController/Create
-        [HttpPost("CreateContainerPost")]
+        [HttpPost("")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateContainerPost(StorageInformation storageInfo)
         {
@@ -57,7 +57,7 @@ namespace StorageWebApp.Controllers
             }
         }
 
-        [HttpPost("UploadFilePost")]
+        [HttpPost("")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> UploadFilePost(StorageInformation storageInfo)
         {
@@ -71,7 +71,7 @@ namespace StorageWebApp.Controllers
             }
         }
 
-        [HttpPost("DeleteContainer")]
+        [HttpPost("")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteContainer(StorageInformation storageInfo)
         {

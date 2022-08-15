@@ -7,8 +7,8 @@ namespace StorageWebApp.Controllers
 {
     public class TableController : Controller
     {
-        public const string SessionConnectionString = "_connstring";
-        public const string SessionContainer = "_container";
+        public const string SessionConnectionString = "_connstringtable";
+        public const string SessiionTableName = "_tablename";
 
         public StorageInformation memoryStorageInformation { get; set; }
 
@@ -19,17 +19,17 @@ namespace StorageWebApp.Controllers
         }
 
         // GET: StorageController/Create
-        public ActionResult CreateContainer()
+        public ActionResult CreateTable()
         {
             return View();
         }
 
-        public ActionResult UploadFile()
+        public ActionResult CreateItemTable()
         {
             return View();
         }
 
-        public ActionResult DeleteContainer()
+        public ActionResult GetItemTable()
         {
             return View();
         }
@@ -42,16 +42,19 @@ namespace StorageWebApp.Controllers
         }
 
         // POST: StorageController/Create
-        [HttpPost("CreateContainerPost")]
+        [HttpPost("CreateTable")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateContainerPost(StorageInformation storageInfo)
+        public async Task<ActionResult> CreateTable(TableInformation tableInformation)
         {
             try
             {
-                HttpContext.Session.SetString(SessionConnectionString, storageInfo.ConnectionString);
-                HttpContext.Session.SetString(SessionContainer, storageInfo.ContainerName);
+                Library.TableService tableService = new Library.TableService();
+                await tableService.CreateTableAsync(tableInformation);
 
-                return null;
+                HttpContext.Session.SetString(SessionConnectionString, tableInformation.ConnectionString);
+                HttpContext.Session.SetString(SessiionTableName, tableInformation.TableName);
+
+                return RedirectToAction("Index","Home");
             }
             catch
             {
@@ -59,13 +62,16 @@ namespace StorageWebApp.Controllers
             }
         }
 
-        [HttpPost("UploadFilePost")]
+        [HttpPost("CreateItemTable")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> UploadFilePost(StorageInformation storageInfo)
+        public async Task<ActionResult> CreateItemTablePost(TableInformation tableInformation)
         {
             try
             {
-               return null;
+                Library.TableService tableService = new Library.TableService();
+                await tableService.CreateItemTableAsync(tableInformation);
+
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
@@ -73,7 +79,7 @@ namespace StorageWebApp.Controllers
             }
         }
 
-        [HttpPost("DeleteContainer")]
+        [HttpPost("")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteContainer(StorageInformation storageInfo)
         {

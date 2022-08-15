@@ -36,8 +36,6 @@ namespace StorageWebApp.Controllers
 
         public async Task<ActionResult> BlobsList()
         {
-            
-
             string conn = HttpContext.Session.GetString(SessionConnectionString).ToString();
             string container = HttpContext.Session.GetString(SessionContainer).ToString();
             Library.StorageService storageService = new Library.StorageService();
@@ -46,7 +44,7 @@ namespace StorageWebApp.Controllers
                 ConnectionString = conn,
                 ContainerName = container,
             };
-            Azure.Pageable<BlobItem> blobList = await storageService.ListBlobsAsync(storageInformation);
+            Azure.Pageable<BlobItem> blobList = storageService.ListBlobsAsync(storageInformation).Result;
             var result = blobList;
             return View(blobList);
         }
@@ -65,7 +63,7 @@ namespace StorageWebApp.Controllers
                 memoryStorageInformation = storageInfo;
                 Library.StorageService storageService = new Library.StorageService();
                 await storageService.CreateContainerAsync(storageInfo);
-                return RedirectToPage("BlobsList");
+                return RedirectToAction("Index", "Home");
 
             }
             catch
@@ -83,7 +81,7 @@ namespace StorageWebApp.Controllers
                 memoryStorageInformation = storageInfo;
                 Library.StorageService storageService = new Library.StorageService();
                 await storageService.UploadAsync(storageInfo);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
@@ -100,48 +98,6 @@ namespace StorageWebApp.Controllers
                 memoryStorageInformation = storageInfo;
                 Library.StorageService storageService = new Library.StorageService();
                 await storageService.DeleteContainerAsync(storageInfo);
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StorageController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: StorageController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StorageController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: StorageController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
                 return RedirectToAction(nameof(Index));
             }
             catch

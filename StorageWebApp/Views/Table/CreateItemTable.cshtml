@@ -1,30 +1,31 @@
-﻿@model StorageModels.StorageInformation
+﻿@model StorageModels.TableInformation
 
 @{
-    ViewData["Title"] = "Storage";
+    ViewData["Title"] = "Taables";
 }
 
-<h1>Add Storage Information</h1>
+<h1>Create Item Table</h1>
 
 <h4></h4>
 <hr />
 <div class="row">
     <div class="col-md-6">
-        <form asp-action="CreateContainerPost">
+        <form asp-action="CreateItemTablet">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ConnectionString" class="control-label"></label>
-                <textarea maxlength="4000" type="url" asp-for="ConnectionString" class="form-control"></textarea>
+                <textarea maxlength="4000" type="url" asp-for="ConnectionString" class="form-control" />
+                <textarea class="form-control" id="textAreaExample1" rows="8"></textarea>
                 <span asp-validation-for="ConnectionString" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ContainerName" class="control-label"></label>
-                <input asp-for="ContainerName" class="form-control" />
-                <span asp-validation-for="ContainerName" class="text-danger"></span>
+                <label asp-for="TableName" class="control-label"></label>
+                <input asp-for="TableName" class="form-control" />
+                <span asp-validation-for="TableName" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group">
-                <input type="submit" value="Create Container" class="btn btn-primary" />
+                <input type="submit" value="Create Item Table" class="btn btn-primary" />
             </div>
         </form>
     </div>

@@ -78,7 +78,15 @@ namespace Library
                 // Create the container and return a container client object
                 BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(storageInformation.ContainerName);
 
-                return containerClient.GetBlobs();
+                await foreach (var item in containerClient.GetBlobsAsync())
+                {
+                    
+                    var t = 2;
+                }
+                
+                
+
+                return null;
             }
             catch (Exception ex)
             {

@@ -1,36 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Azure.Data.Tables;
-using StorageModels;
-
-namespace LibraryModel
+﻿namespace Library
 {
+    using Azure.Data.Tables;
+    using StorageModels;
+    using System.Threading.Tasks;
+
     public class TableService
     {
-        const string TABLE_NAME = "";
-
         public TableService()
         {
 
         }
 
-        public async Task CreateTable()
+        public async Task CreateTableAsync(TableInformation tableInformation)
         {
             // New instance of the TableClient class
-            TableServiceClient tableServiceClient = new TableServiceClient(Environment.GetEnvironmentVariable("COSMOS_CONNECTION_STRING"));
+            TableServiceClient tableServiceClient = new TableServiceClient(tableInformation.ConnectionString);
 
             // New instance of TableClient class referencing the server-side table
             TableClient tableClient = tableServiceClient.GetTableClient(
-                tableName: "adventureworks"
+                tableName: tableInformation.TableName
             );
 
             await tableClient.CreateIfNotExistsAsync();
         }
 
-        public async Task CreateItemTable()
+        public async Task CreateItemTableAsync(TableInformation tableInformation)
         {
             // Create new item using composite key constructor
             var prod1 = new TableProduct()
@@ -42,26 +36,24 @@ namespace LibraryModel
                 Sale = true
             };
 
-            TableServiceClient tableServiceClient = new TableServiceClient(Environment.GetEnvironmentVariable("COSMOS_CONNECTION_STRING"));
+            TableServiceClient tableServiceClient = new TableServiceClient(tableInformation.ConnectionString);
 
             // New instance of TableClient class referencing the server-side table
             TableClient tableClient = tableServiceClient.GetTableClient(
-                tableName: "adventureworks"
+                tableName: tableInformation.TableName
             );
 
             // Add new item to server-side table
             await tableClient.AddEntityAsync<TableProduct>(prod1);
-
-
         }
 
-        public async Task GetItemTableAsync()
+        public async Task GetItemTableAsync(TableInformation tableInformation)
         {
-            TableServiceClient tableServiceClient = new TableServiceClient(Environment.GetEnvironmentVariable("COSMOS_CONNECTION_STRING"));
+            TableServiceClient tableServiceClient = new TableServiceClient(tableInformation.ConnectionString);
 
             // New instance of TableClient class referencing the server-side table
             TableClient tableClient = tableServiceClient.GetTableClient(
-                tableName: "adventureworks"
+                tableName: tableInformation.TableName
             );
 
             // Read a single item from container
@@ -69,9 +61,6 @@ namespace LibraryModel
                 rowKey: "68719518388",
                 partitionKey: "gear-surf-surfboards"
             );
-            Console.WriteLine("Single product:");
-            Console.WriteLine(product.Value.Name);
-
         }
     }
 }
