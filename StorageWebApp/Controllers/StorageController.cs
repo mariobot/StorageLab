@@ -19,22 +19,20 @@
         // GET: StorageController/Create
         public ActionResult CreateContainer()
         {
-            return View();
+            StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
+            return View(storageInformation);
         }
 
         public ActionResult UploadFile()
         {
-            return View();
+            StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
+            return View(storageInformation);
         }
 
         public ActionResult UploadFile2()
         {
-            return View();
-        }
-
-        public ActionResult DeleteContainer(string blobName)
-        {
-            return View();
+            StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
+            return View(storageInformation);
         }
 
         public async Task<ActionResult> BlobsList()
@@ -52,92 +50,65 @@
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateContainerPost(StorageInformation storageInfo)
         {
-            try
-            {
+            SessionUtil.SetSession(storageInfo, HttpContext);
 
-                SessionUtil.SetSession(storageInfo, HttpContext);               
-
-                memoryStorageInformation = storageInfo;
-                Library.StorageService storageService = new Library.StorageService();
-                await storageService.CreateContainerAsync(storageInfo);
-                return RedirectToAction("Index", "Home");
-
-            }
-            catch
-            {
-                return View();
-            }
+            memoryStorageInformation = storageInfo;
+            Library.StorageService storageService = new Library.StorageService();
+            await storageService.CreateContainerAsync(storageInfo);
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost("UploadFilePost")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> UploadFilePost(StorageInformation storageInfo)
         {
-            try
-            {
-                SessionUtil.SetSession(storageInfo, HttpContext);
+            SessionUtil.SetSession(storageInfo, HttpContext);
 
-                Library.StorageService storageService = new Library.StorageService();
-                await storageService.UploadAsync(storageInfo);
-                return RedirectToAction("Index", "Home");
-            }
-            catch
-            {
-                return View();
-            }
+            Library.StorageService storageService = new Library.StorageService();
+            await storageService.UploadAsync(storageInfo);
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost("UploadFilePost2")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> UploadFilePost2(StorageInformation storageInfo)
         {
-            try
-            {
-                SessionUtil.SetSession(storageInfo, HttpContext);
+            SessionUtil.SetSession(storageInfo, HttpContext);
 
-                Library.StorageService storageService = new Library.StorageService();
-                await storageService.Upload2Async(storageInfo);
-                return RedirectToAction("Index", "Home");
-            }
-            catch
-            {
-                return View();
-            }
+            Library.StorageService storageService = new Library.StorageService();
+            await storageService.Upload2Async(storageInfo);
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost("DeleteContainer")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteContainer(StorageInformation storageInfo)
         {
-            try
-            {
-                SessionUtil.SetSession(storageInfo, HttpContext);
+            SessionUtil.SetSession(storageInfo, HttpContext);
 
-                Library.StorageService storageService = new Library.StorageService();
-                await storageService.DeleteContainerAsync(storageInfo);
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            Library.StorageService storageService = new Library.StorageService();
+            await storageService.DeleteContainerAsync(storageInfo);
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpPost("DeleteFile")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteFile(string filename)
         {
-            try
-            {
-                StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
-                Library.StorageService storageService = new Library.StorageService();
-                await storageService.DeleteFileAsync(storageInformation, filename);
-                return RedirectToAction("BlobsList", "Storage");
-            }
-            catch
-            {
-                return View();
-            }
+            StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
+            Library.StorageService storageService = new Library.StorageService();
+            await storageService.DeleteFileAsync(storageInformation, filename);
+            return RedirectToAction("BlobsList", "Storage");
+        }
+
+        [HttpPost("DownloadFile")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DownloadFile(string filename)
+        {
+            StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
+            Library.StorageService storageService = new Library.StorageService();
+            Stream file = await storageService.DownloadFileAsync(storageInformation, filename);
+            return File(file,"application/text");
         }
     }
 }

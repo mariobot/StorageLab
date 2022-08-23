@@ -141,5 +141,18 @@
 
             containerClient.GetBlobClient(filename).Delete();
         }
+
+        public async Task<Stream> DownloadFileAsync(StorageInformation storageInformation, string filename)
+        {
+            // Create the blobClient
+            BlobServiceClient blobServiceClient = new BlobServiceClient(storageInformation.ConnectionString);
+
+            // Create the container and return a container client object
+            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(storageInformation.ContainerName);
+
+            Stream file = containerClient.GetBlobClient(filename).OpenRead();
+
+            return file;
+        }
     }
 }
