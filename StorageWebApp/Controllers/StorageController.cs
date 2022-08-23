@@ -29,6 +29,11 @@ namespace StorageWebApp.Controllers
             return View();
         }
 
+        public ActionResult UploadFile2()
+        {
+            return View();
+        }
+
         public ActionResult DeleteContainer()
         {
             return View();
@@ -81,6 +86,23 @@ namespace StorageWebApp.Controllers
                 memoryStorageInformation = storageInfo;
                 Library.StorageService storageService = new Library.StorageService();
                 await storageService.UploadAsync(storageInfo);
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost("UploadFilePost2")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> UploadFilePost2(StorageInformation storageInfo)
+        {
+            try
+            {
+                memoryStorageInformation = storageInfo;
+                Library.StorageService storageService = new Library.StorageService();
+                await storageService.Upload2Async(storageInfo);
                 return RedirectToAction("Index", "Home");
             }
             catch
