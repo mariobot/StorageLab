@@ -32,7 +32,7 @@
             return View();
         }
 
-        public ActionResult DeleteContainer()
+        public ActionResult DeleteContainer(string blobName)
         {
             return View();
         }
@@ -116,6 +116,23 @@
                 Library.StorageService storageService = new Library.StorageService();
                 await storageService.DeleteContainerAsync(storageInfo);
                 return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        [HttpPost("DeleteFile")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> DeleteFile(string filename)
+        {
+            try
+            {
+                StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
+                Library.StorageService storageService = new Library.StorageService();
+                await storageService.DeleteFileAsync(storageInformation, filename);
+                return RedirectToAction("BlobsList", "Storage");
             }
             catch
             {

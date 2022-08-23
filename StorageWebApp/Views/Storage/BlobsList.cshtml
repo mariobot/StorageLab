@@ -11,14 +11,32 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
-        <table>
+        <table class="table table-bordered">
             <tr>
-                <td></td>
+                <td>Name</td>
+                <td>Metadata</td>
+                <td>Blob Type</td>
+                <td>Encoding</td>
+                <td>Content Type</td>
+                <td>Delete</td>
             </tr>
             @foreach(BlobItem blob in Model)
             {
                 <tr>
                     <td>@blob.Name</td>
+                    <td>@blob.Metadata</td>
+                    <td>@blob.Properties.BlobType</td>
+                    <td>@blob.Properties.ContentEncoding</td>
+                    <td>@blob.Properties.ContentLength</td>
+                    <td>@blob.Properties.ContentType</td>
+                    <td>
+                    <form asp-action="DeleteFile">
+                        <input type="hidden" value="@blob.Name" name="filename">
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </form>
+                    </td>
                 </tr>
             }
         </table>

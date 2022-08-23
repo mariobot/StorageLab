@@ -40,30 +40,6 @@
             
         }
 
-        public async Task CreateContainer(StorageInformation storageInformation)
-        {
-            try
-            {
-                // Create the blobClient
-                BlobServiceClient blobServiceClient = new BlobServiceClient(storageInformation.ConnectionString);
-
-                // Create the container and return a container client object
-                BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(storageInformation.ContainerName);
-
-                if (!containerClient.Exists())
-                {
-                    // Create the container and return a container client object
-                    containerClient = blobServiceClient.CreateBlobContainer(storageInformation.ContainerName);
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-
-        }
-
         public async Task UploadAsync(StorageInformation storageInformation) 
         {
             // Create the blobClient
@@ -155,6 +131,15 @@
             await containerClient.DeleteAsync();
         }
 
+        public async Task DeleteFileAsync(StorageInformation storageInformation, string filename)
+        {
+            // Create the blobClient
+            BlobServiceClient blobServiceClient = new BlobServiceClient(storageInformation.ConnectionString);
 
+            // Create the container and return a container client object
+            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(storageInformation.ContainerName);
+
+            containerClient.GetBlobClient(filename).Delete();
+        }
     }
 }

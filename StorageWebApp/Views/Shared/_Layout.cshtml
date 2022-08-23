@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -35,7 +37,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Tables" asp-action="CreateTable">Table</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Storage" asp-action="CreateContainer">Storage</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Storage" asp-action="CreateContainer">@Context.Session.GetString("_container")</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Storage" asp-action="CreateContainer">Storage</a>
