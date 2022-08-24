@@ -24,12 +24,7 @@
                     <td>@cont.Name</td>
                     <td>@cont.Properties.LastModified</td>
                     <td>
-                    <form asp-action="DownloadFile">
-                        <input type="hidden" value="@cont.Name" name="filename">
-                        <div class="form-group">
-                            <input type="submit" value="Download" class="btn btn-success" />
-                        </div>
-                    </form>
+                    <a href="../Storage/BlobsList?containername=@cont.Name" class="btn btn-primary">Open</a>
                     <td>
                     <form asp-action="DeleteContainer">
                         <input type="hidden" value="@cont.Name" name="containername">

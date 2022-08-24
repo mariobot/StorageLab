@@ -43,9 +43,14 @@
             return View(storageInformation);
         }
 
-        public async Task<ActionResult> BlobsList()
+        public async Task<ActionResult> BlobsList(string containername)
         {
             StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
+            
+            if (!string.IsNullOrEmpty(containername))
+            {
+                storageInformation.ContainerName = containername;
+            }
             
             Library.StorageService storageService = new Library.StorageService();
             Azure.Pageable<BlobItem> blobList = storageService.ListBlobsAsync(storageInformation).Result;
