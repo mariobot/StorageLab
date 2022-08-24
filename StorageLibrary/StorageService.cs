@@ -120,13 +120,33 @@
             
         }
 
-        public async Task DeleteContainerAsync(StorageInformation storageInformation)
+        public async Task<Azure.AsyncPageable<BlobContainerItem>> ContainersAsync(StorageInformation storageInformation)
+        {
+            try
+            {
+                // Create the blobClient
+                BlobServiceClient blobServiceClient = new BlobServiceClient(storageInformation.ConnectionString);
+
+                // Create the container and return a container client object
+                var resultSegment = blobServiceClient.GetBlobContainersAsync();            
+
+                return resultSegment;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
+        }
+
+        public async Task DeleteContainerAsync(StorageInformation storageInformation, string containername)
         {   
             // Create the blobClient
             BlobServiceClient blobServiceClient = new BlobServiceClient(storageInformation.ConnectionString);
 
             // Create the container and return a container client object
-            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(storageInformation.ContainerName);
+            BlobContainerClient containerClient = blobServiceClient.GetBlobContainerClient(containername);
 
             await containerClient.DeleteAsync();
         }

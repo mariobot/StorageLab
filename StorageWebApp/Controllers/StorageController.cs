@@ -23,6 +23,14 @@
             return View(storageInformation);
         }
 
+        public async Task<ActionResult> Containers()
+        {
+            StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
+            Library.StorageService storageService = new Library.StorageService();
+            Azure.AsyncPageable<BlobContainerItem> containersList = await storageService.ContainersAsync(storageInformation);
+            return View(containersList);
+        }
+
         public ActionResult UploadFile()
         {
             StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
@@ -82,13 +90,12 @@
 
         [HttpPost("DeleteContainer")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteContainer(StorageInformation storageInfo)
+        public async Task<ActionResult> DeleteContainer(string containername)
         {
-            SessionUtil.SetSession(storageInfo, HttpContext);
-
+            StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
             Library.StorageService storageService = new Library.StorageService();
-            await storageService.DeleteContainerAsync(storageInfo);
-            return RedirectToAction(nameof(Index));
+            await storageService.DeleteContainerAsync(storageInformation, containername);
+            return RedirectToAction("Containers", "Storage");
         }
 
         [HttpPost("DeleteFile")]
