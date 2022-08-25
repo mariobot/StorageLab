@@ -1,7 +1,6 @@
 ﻿namespace StorageWebApp.Controllers
 {
     using Azure.Storage.Blobs.Models;
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using StorageModels;
     using Util;

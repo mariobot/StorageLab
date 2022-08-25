@@ -34,17 +34,10 @@ namespace StorageWebApp.Controllers
             return View();
         }
 
-        public async Task<ActionResult> BlobsList()
-        {
-            return null;
-
-            
-        }
-
         // POST: StorageController/Create
         [HttpPost("CreateTable")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateTable(TableInformation tableInformation)
+        public async Task<ActionResult> CreateTablePost(TableInformation tableInformation)
         {
             try
             {
@@ -72,62 +65,6 @@ namespace StorageWebApp.Controllers
                 await tableService.CreateItemTableAsync(tableInformation);
 
                 return RedirectToAction("Index", "Home");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        [HttpPost("")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteContainer(StorageInformation storageInfo)
-        {
-            try
-            {
-                return null;
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StorageController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: StorageController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StorageController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: StorageController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
             }
             catch
             {
