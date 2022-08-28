@@ -44,8 +44,7 @@ namespace StorageWebApp.Controllers
                 Library.TableService tableService = new Library.TableService();
                 await tableService.CreateTableAsync(tableInformation);
 
-                HttpContext.Session.SetString(SessionConnectionString, tableInformation.ConnectionString);
-                HttpContext.Session.SetString(SessiionTableName, tableInformation.TableName);
+
 
                 return RedirectToAction("Index","Home");
             }

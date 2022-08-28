@@ -62,7 +62,7 @@
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateContainerPost(StorageInformation storageInfo)
         {
-            SessionUtil.SetSession(storageInfo, HttpContext);
+            SessionUtil.SetSessionStorage(storageInfo, HttpContext);
 
             memoryStorageInformation = storageInfo;
             Library.StorageService storageService = new Library.StorageService();
@@ -74,7 +74,7 @@
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> UploadFilePost(StorageInformation storageInfo)
         {
-            SessionUtil.SetSession(storageInfo, HttpContext);
+            SessionUtil.SetSessionStorage(storageInfo, HttpContext);
 
             Library.StorageService storageService = new Library.StorageService();
             await storageService.UploadAsync(storageInfo);
@@ -85,7 +85,7 @@
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> UploadFilePost2(StorageInformation storageInfo)
         {
-            SessionUtil.SetSession(storageInfo, HttpContext);
+            SessionUtil.SetSessionStorage(storageInfo, HttpContext);
 
             Library.StorageService storageService = new Library.StorageService();
             await storageService.Upload2Async(storageInfo);
