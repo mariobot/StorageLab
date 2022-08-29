@@ -21,12 +21,14 @@ namespace StorageWebApp.Controllers
         // GET: StorageController/Create
         public ActionResult CreateTable()
         {
-            return View();
+            var output = Util.SessionUtil.GetSessionTable(HttpContext);
+            return View(output);
         }
 
         public ActionResult CreateItemTable()
         {
-            return View();
+            var output = Util.SessionUtil.GetSessionTable(HttpContext);
+            return View(output);
         }
 
         public ActionResult GetItemTable()

@@ -7,11 +7,11 @@ namespace StorageWebApp.Util
         public const string SessionConnectionString = "_connstring";//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         public const string SessionContainer = "_container";//--------------------
         public const string SessionConnectionString2 = "_connstring2";//----------
-        public const string SessionTable = "_container2";//----------------------
+        public const string SessionTable = "_table";//----------------------
         public const string SessionConnectionString3 = "_connstring3";//--------------------
-        public const string SessionFile = "_container3";//---------------------------------
+        public const string SessionFile = "_file";//---------------------------------
         public const string SessionConnectionString4 = "_connstring4"; //----------------------------
-        public const string SessionQueue = "_container4";
+        public const string SessionQueue = "_queue";
         public static void SetSessionStorage(StorageInformation storageInformation, HttpContext httpContext)
         {
             httpContext.Session.SetString(SessionConnectionString, storageInformation.ConnectionString);
@@ -55,18 +55,18 @@ namespace StorageWebApp.Util
             }
         }
 
-        public static StorageInformation GetSessionTable(HttpContext httpContext)
+        public static TableInformation GetSessionTable(HttpContext httpContext)
         {
             if (httpContext.Session.GetString(SessionConnectionString2) != null
-             && httpContext.Session.GetString(SessionContainer2) != null)
+             && httpContext.Session.GetString(SessionTable) != null)
             {
-                StorageInformation storageInformation = new StorageInformation
+                TableInformation tableInformation = new TableInformation
                 {
                     ConnectionString = httpContext.Session.GetString(SessionConnectionString2),
-                    ContainerName = httpContext.Session.GetString(SessionContainer2)
+                    TableName = httpContext.Session.GetString(SessionTable)
                 };
 
-                return storageInformation;
+                return tableInformation;
             }
             else
             {
@@ -77,12 +77,12 @@ namespace StorageWebApp.Util
         public static StorageInformation GetSessionFile(HttpContext httpContext)
         {
             if (httpContext.Session.GetString(SessionConnectionString3) != null
-             && httpContext.Session.GetString(SessionContainer3) != null)
+             && httpContext.Session.GetString(SessionFile) != null)
             {
                 StorageInformation storageInformation = new StorageInformation
                 {
                     ConnectionString = httpContext.Session.GetString(SessionConnectionString3),
-                    ContainerName = httpContext.Session.GetString(SessionContainer3)
+                    ContainerName = httpContext.Session.GetString(SessionFile)
                 };
 
                 return storageInformation;
@@ -96,12 +96,12 @@ namespace StorageWebApp.Util
         public static StorageInformation GetSessionQueue(HttpContext httpContext)
         {
             if (httpContext.Session.GetString(SessionConnectionString4) != null
-             && httpContext.Session.GetString(SessionContainer24) != null)
+             && httpContext.Session.GetString(SessionQueue) != null)
             {
                 StorageInformation storageInformation = new StorageInformation
                 {
                     ConnectionString = httpContext.Session.GetString(SessionConnectionString4),
-                    ContainerName = httpContext.Session.GetString(SessionContainer24)
+                    ContainerName = httpContext.Session.GetString(SessionQueue)
                 };
 
                 return storageInformation;

@@ -62,7 +62,7 @@
             Console.WriteLine("Uploading to Blob storage as blob:\n\t {0}\n", blobClient.Uri);
 
             // Upload data from the local file
-            await blobClient.UploadAsync(localFilePath, true);
+            await blobClient.UploadAsync(localFilePath, new BlobHttpHeaders { ContentType = "text/plain" });
 
         }
 
