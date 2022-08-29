@@ -1,0 +1,58 @@
+﻿@using Azure.Storage.Blobs.Models
+@model Azure.Pageable<BlobItem>;
+
+@{
+    ViewData["Title"] = "Storage";
+}
+
+<h1>Blobs list</h1>
+
+<h4></h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <tr>
+                <td>Name</td>
+                <td>Blob Type</td>
+                <td>Length</td>
+                <td>Content Type</td>
+                <td>Download</td>
+                <td>Delete</td>
+            </tr>
+            @foreach(BlobItem blob in Model)
+            {
+                <tr>
+                    <td>@blob.Name</td>
+                    <td>@blob.Properties.BlobType</td>
+                    <td>@blob.Properties.ContentLength</td>
+                    <td>@blob.Properties.ContentType</td>
+                    <td>
+                    <form asp-action="DownloadFile">
+                        <input type="hidden" value="@blob.Name" name="filename">
+                        <div class="form-group">
+                            <input type="submit" value="Download" class="btn btn-success" />
+                        </div>
+                    </form>
+                    <td>
+                    <form asp-action="DeleteFile">
+                        <input type="hidden" value="@blob.Name" name="filename">
+                        <div class="form-group">
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                        </div>
+                    </form>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div>
+    <br />
+    <a asp-controller="Storage" asp-action="Containers">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

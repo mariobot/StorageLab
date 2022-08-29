@@ -31,7 +31,8 @@ namespace StorageWebApp.Controllers
 
         public ActionResult GetItemTable()
         {
-            return View();
+            var output = Util.SessionUtil.GetSessionTable(HttpContext);
+            return View(output);
         }
 
         // POST: StorageController/Create
@@ -41,6 +42,7 @@ namespace StorageWebApp.Controllers
         {
             try
             {
+                Util.SessionUtil.SetSessionTable(tableInformation, HttpContext);
                 Library.TableService tableService = new Library.TableService();
                 await tableService.CreateTableAsync(tableInformation);
 
@@ -60,6 +62,7 @@ namespace StorageWebApp.Controllers
         {
             try
             {
+                Util.SessionUtil.SetSessionTable(tableInformation, HttpContext);
                 Library.TableService tableService = new Library.TableService();
                 await tableService.CreateItemTableAsync(tableInformation);
 
