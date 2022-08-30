@@ -31,6 +31,12 @@ namespace StorageWebApp.Controllers
             return View(output);
         }
 
+        public async Task<ActionResult> CreateItemsTable()
+        {
+            var output = Util.SessionUtil.GetSessionTable(HttpContext);
+            return View(output);
+        }
+
         public async Task<ActionResult> GetItemTable()
         {
             var tableInformation = Util.SessionUtil.GetSessionTable(HttpContext);
@@ -44,38 +50,35 @@ namespace StorageWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateTablePost(TableInformation tableInformation)
         {
-            try
-            {
-                Util.SessionUtil.SetSessionTable(tableInformation, HttpContext);
-                Library.TableService tableService = new Library.TableService();
-                await tableService.CreateTableAsync(tableInformation);
+            
+            Util.SessionUtil.SetSessionTable(tableInformation, HttpContext);
+            Library.TableService tableService = new Library.TableService();
+            await tableService.CreateTableAsync(tableInformation);
 
-
-
-                return RedirectToAction("Index","Home");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index","Home");
+            
         }
 
         [HttpPost("CreateItemTablePost")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateItemTablePost(TableInformation tableInformation)
-        {
-            try
-            {
-                Util.SessionUtil.SetSessionTable(tableInformation, HttpContext);
-                Library.TableService tableService = new Library.TableService();
-                await tableService.CreateItemTableAsync(tableInformation);
+        {   
+            Util.SessionUtil.SetSessionTable(tableInformation, HttpContext);
+            Library.TableService tableService = new Library.TableService();
+            await tableService.CreateItemTableAsync(tableInformation);
 
-                return RedirectToAction("Index", "Home");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index", "Home");            
+        }
+
+        [HttpPost("CreateItemsTablePost")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CreateItemsTablePost(TableInformation tableInformation)
+        {
+            Util.SessionUtil.SetSessionTable(tableInformation, HttpContext);
+            Library.TableService tableService = new Library.TableService();
+            await tableService.CreateItemTableAsync(tableInformation);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
