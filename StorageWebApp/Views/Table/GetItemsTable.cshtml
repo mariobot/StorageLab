@@ -1,5 +1,5 @@
 ﻿@using StorageModels
-@model TableProduct;
+@model Azure.Pageable<TableProduct>;
 
 @{
     ViewData["Title"] = "Table";
@@ -21,24 +21,26 @@
                 <td>Timestamp</td>
                 <td>Delete</td>
             </tr>            
+            @foreach(TableProduct prod in Model)
+            {
                 <tr>
-                    <td>@Model.PartitionKey</td>
-                    <td>@Model.RowKey</td>
-                    <td>@Model.Quantity</td>
-                    <td>@Model.Name</td>
-                    <td>@Model.Sale</td>
-                    <td>@Model.Timestamp</td>
+                    <td>@prod.PartitionKey</td>
+                    <td>@prod.RowKey</td>
+                    <td>@prod.Quantity</td>
+                    <td>@prod.Name</td>
+                    <td>@prod.Sale</td>
+                    <td>@prod.Timestamp</td>
                     <td>
-                    <form asp-action="DeleteFile">
-                        <input type="hidden" value="@Model.PartitionKey" name="partitionkey">
-                        <input type="hidden" value="@Model.RowKey" name="rowkey">
+                    <form asp-action="DeleteTableRecord">
+                        <input type="hidden" value="@prod.PartitionKey" name="partitionkey">
+                        <input type="hidden" value="@prod.RowKey" name="rowkey">
                         <div class="form-group">
                             <input type="submit" value="Delete" class="btn btn-danger" />
                         </div>
                     </form>
                     </td>
                 </tr>
-            
+            }
         </table>
     </div>
 </div>

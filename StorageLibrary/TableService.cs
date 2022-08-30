@@ -64,7 +64,7 @@
                 var prod = new TableProduct()
                 {
                     RowKey = "68719518388",
-                    PartitionKey = $"partition-{new Random().Next(0, 999999)}-",
+                    PartitionKey = $"partition-{new Random().Next(0, 999999)}",
                     Name = maleNames[new Random().Next(0, 10)],
                     Quantity = new Random().Next(0, 100),
                     Sale = true
@@ -91,6 +91,21 @@
             );
 
             return product.Value;
+        }
+
+        public async Task<Azure.Pageable<TableProduct>> GetItemsTableAsync(TableInformation tableInformation)
+        {
+            TableServiceClient tableServiceClient = new TableServiceClient(tableInformation.ConnectionString);
+
+            // New instance of TableClient class referencing the server-side table
+            TableClient tableClient = tableServiceClient.GetTableClient(
+                tableName: tableInformation.TableName
+            );
+
+            // Read a single item from container
+            var result = tableClient.Query<TableProduct>(x => x.RowKey == "68719518388");
+
+            return result;
         }
     }
 }

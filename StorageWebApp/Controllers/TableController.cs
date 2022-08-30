@@ -45,6 +45,14 @@ namespace StorageWebApp.Controllers
             return View(result);
         }
 
+        public async Task<ActionResult> GetItemsTable()
+        {
+            var tableInformation = Util.SessionUtil.GetSessionTable(HttpContext);
+            Library.TableService tableService = new Library.TableService();
+            var result = await tableService.GetItemsTableAsync(tableInformation);
+            return View(result);
+        }
+
         // POST: StorageController/Create
         [HttpPost("CreateTablePost")]
         [ValidateAntiForgeryToken]
@@ -76,7 +84,7 @@ namespace StorageWebApp.Controllers
         {
             Util.SessionUtil.SetSessionTable(tableInformation, HttpContext);
             Library.TableService tableService = new Library.TableService();
-            await tableService.CreateItemTableAsync(tableInformation);
+            await tableService.CreateItemsTableAsync(tableInformation);
 
             return RedirectToAction("Index", "Home");
         }
