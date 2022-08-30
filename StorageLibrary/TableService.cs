@@ -47,7 +47,7 @@
             await tableClient.AddEntityAsync<TableProduct>(prod1);
         }
 
-        public async Task GetItemTableAsync(TableInformation tableInformation)
+        public async Task<TableProduct> GetItemTableAsync(TableInformation tableInformation)
         {
             TableServiceClient tableServiceClient = new TableServiceClient(tableInformation.ConnectionString);
 
@@ -61,6 +61,8 @@
                 rowKey: "68719518388",
                 partitionKey: "gear-surf-surfboards"
             );
+
+            return product.Value;
         }
     }
 }

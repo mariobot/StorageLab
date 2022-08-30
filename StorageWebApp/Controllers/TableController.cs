@@ -25,20 +25,22 @@ namespace StorageWebApp.Controllers
             return View(output);
         }
 
-        public ActionResult CreateItemTable()
+        public async Task<ActionResult> CreateItemTable()
         {
             var output = Util.SessionUtil.GetSessionTable(HttpContext);
             return View(output);
         }
 
-        public ActionResult GetItemTable()
+        public async Task<ActionResult> GetItemTable()
         {
-            var output = Util.SessionUtil.GetSessionTable(HttpContext);
-            return View(output);
+            var tableInformation = Util.SessionUtil.GetSessionTable(HttpContext);
+            Library.TableService tableService = new Library.TableService();
+            var result = await tableService.GetItemTableAsync(tableInformation);
+            return View(result);
         }
 
         // POST: StorageController/Create
-        [HttpPost("CreateTable")]
+        [HttpPost("CreateTablePost")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateTablePost(TableInformation tableInformation)
         {
@@ -58,7 +60,7 @@ namespace StorageWebApp.Controllers
             }
         }
 
-        [HttpPost("CreateItemTable")]
+        [HttpPost("CreateItemTablePost")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateItemTablePost(TableInformation tableInformation)
         {
