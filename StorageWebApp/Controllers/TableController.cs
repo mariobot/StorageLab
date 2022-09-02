@@ -59,6 +59,7 @@ namespace StorageWebApp.Controllers
         public async Task<ActionResult> CreateTablePost(TableInformation tableInformation)
         {
             
+
             Util.SessionUtil.SetSessionTable(tableInformation, HttpContext);
             Library.TableService tableService = new Library.TableService();
             await tableService.CreateTableAsync(tableInformation);
