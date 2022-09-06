@@ -19,7 +19,7 @@ namespace StorageWebApp.Controllers
         }
 
         // GET: StorageController/Create
-        public ActionResult CreateContainer()
+        public ActionResult CreateQueue()
         {
             return View();
         }
