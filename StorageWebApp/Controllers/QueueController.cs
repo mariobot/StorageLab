@@ -24,6 +24,13 @@ namespace StorageWebApp.Controllers
             return View();
         }
 
+        [HttpPost("CreateQueuePost")]
+        public Task<ActionResult> CreateQueuePost()
+        {
+            
+        
+        }
+
         public ActionResult UploadFile()
         {
             return View();
