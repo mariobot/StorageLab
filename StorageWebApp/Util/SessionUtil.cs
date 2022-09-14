@@ -30,10 +30,10 @@ namespace StorageWebApp.Util
             httpContext.Session.SetString(SessionContainer, storageInformation.ContainerName);
         }
 
-        public static void SetSessionQueue(StorageInformation storageInformation, HttpContext httpContext)
+        public static void SetSessionQueue(QueueInformation queueInformation, HttpContext httpContext)
         {
-            httpContext.Session.SetString(SessionConnectionString, storageInformation.ConnectionString);
-            httpContext.Session.SetString(SessionContainer, storageInformation.ContainerName);
+            httpContext.Session.SetString(SessionConnectionString3, queueInformation.ConnectionString);
+            httpContext.Session.SetString(SessionQueue, queueInformation.QueueName);
         }
 
         public static StorageInformation GetSession(HttpContext httpContext)
@@ -93,18 +93,18 @@ namespace StorageWebApp.Util
             }
         }
 
-        public static StorageInformation GetSessionQueue(HttpContext httpContext)
+        public static QueueInformation GetSessionQueue(HttpContext httpContext)
         {
-            if (httpContext.Session.GetString(SessionConnectionString4) != null
+            if (httpContext.Session.GetString(SessionConnectionString3) != null
              && httpContext.Session.GetString(SessionQueue) != null)
             {
-                StorageInformation storageInformation = new StorageInformation
+                QueueInformation queueInformation = new QueueInformation
                 {
-                    ConnectionString = httpContext.Session.GetString(SessionConnectionString4),
-                    ContainerName = httpContext.Session.GetString(SessionQueue)
+                    ConnectionString = httpContext.Session.GetString(SessionConnectionString3),
+                    Message = httpContext.Session.GetString(SessionQueue)
                 };
 
-                return storageInformation;
+                return queueInformation;
             }
             else
             {

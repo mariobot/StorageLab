@@ -58,14 +58,11 @@ namespace StorageWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateTablePost(TableInformation tableInformation)
         {
-            
-
             Util.SessionUtil.SetSessionTable(tableInformation, HttpContext);
             Library.TableService tableService = new Library.TableService();
             await tableService.CreateTableAsync(tableInformation);
 
             return RedirectToAction("Index","Home");
-            
         }
 
         [HttpPost("CreateItemTablePost")]

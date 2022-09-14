@@ -21,14 +21,18 @@ namespace StorageWebApp.Controllers
         // GET: StorageController/Create
         public ActionResult CreateQueue()
         {
-            return View();
+            var output = Util.SessionUtil.GetSessionQueue(HttpContext);
+            return View(output);
         }
 
         [HttpPost("CreateQueuePost")]
-        public Task<ActionResult> CreateQueuePost()
+        public async Task<ActionResult> CreateQueuePost(QueueInformation queueInformation)
         {
-            
-        
+            Util.SessionUtil.SetSessionQueue(queueInformation, HttpContext);
+            Library.QueueService queueService = new Library.QueueService();
+            queueService. CreateQueue(queueInformation);
+
+            return View();       
         }
 
         public ActionResult UploadFile()
@@ -53,8 +57,8 @@ namespace StorageWebApp.Controllers
         {
             try
             {
-                HttpContext.Session.SetString(SessionConnectionString, storageInfo.ConnectionString);
-                HttpContext.Session.SetString(SessionContainer, storageInfo.ContainerName);
+                
+
 
                 return null;
             }
