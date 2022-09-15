@@ -25,6 +25,12 @@ namespace StorageWebApp.Controllers
             return View(output);
         }
 
+
+        public ActionResult InsertMessage()
+        {
+            return View();
+        }
+
         [HttpPost("CreateQueuePost")]
         public async Task<ActionResult> CreateQueuePost(QueueInformation queueInformation)
         {
@@ -35,10 +41,16 @@ namespace StorageWebApp.Controllers
             return View();       
         }
 
-        public ActionResult UploadFile()
+        [HttpPost("InsertMessagePost")]
+        public async Task<ActionResult> InsertMessagePost(QueueInformation queueInformation)
         {
+            Util.SessionUtil.SetSessionQueue(queueInformation, HttpContext);
+            Library.QueueService queueService = new Library.QueueService();
+            queueService.InsertMessage(queueInformation);
+
             return View();
         }
+
 
         public ActionResult DeleteContainer()
         {
