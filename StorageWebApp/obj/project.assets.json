@@ -64,7 +64,7 @@
           "lib/netstandard2.1/Azure.Storage.Blobs.dll": {}
         }
       },
-      "Azure.Storage.Common/12.12.0": {
+      "Azure.Storage.Common/12.13.0-beta.1": {
         "type": "package",
         "dependencies": {
           "Azure.Core": "1.25.0",
@@ -90,10 +90,10 @@
           "lib/netstandard2.0/Azure.Storage.Files.Shares.dll": {}
         }
       },
-      "Azure.Storage.Queues/12.11.0": {
+      "Azure.Storage.Queues/12.12.0-beta.1": {
         "type": "package",
         "dependencies": {
-          "Azure.Storage.Common": "12.12.0",
+          "Azure.Storage.Common": "12.13.0-beta.1",
           "System.Memory.Data": "1.0.2",
           "System.Text.Json": "4.7.2"
         },
@@ -3139,16 +3139,16 @@
         "lib/netstandard2.1/Azure.Storage.Blobs.xml"
       ]
     },
-    "Azure.Storage.Common/12.12.0": {
-      "sha512": "Ms0XsZ/D9Pcudfbqj+rWeCkhx/ITEq8isY0jkor9JFmDAEHsItFa2XrWkzP3vmJU6EsXQrk4snH63HkW/Jksvg==",
+    "Azure.Storage.Common/12.13.0-beta.1": {
+      "sha512": "ddx4UdtZHw18Bc/kfwHKQUP2pU7xykVZHqQj5tSjKYBhpCnXdq5pHEltDConflX9POoVuCI8HyN/WnXdCo2o8Q==",
       "type": "package",
-      "path": "azure.storage.common/12.12.0",
+      "path": "azure.storage.common/12.13.0-beta.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "CHANGELOG.md",
         "README.md",
-        "azure.storage.common.12.12.0.nupkg.sha512",
+        "azure.storage.common.12.13.0-beta.1.nupkg.sha512",
         "azure.storage.common.nuspec",
         "azureicon.png",
         "lib/netstandard2.0/Azure.Storage.Common.dll",
@@ -3171,16 +3171,16 @@
         "lib/netstandard2.0/Azure.Storage.Files.Shares.xml"
       ]
     },
-    "Azure.Storage.Queues/12.11.0": {
-      "sha512": "qpe1Gs1/2t18FoZORF3TgPTaF31RJhN5DQFgZ6ay6qKak9IztaqwKG8Lv2eZ/yhRKJNrOVnaZF4iqf7a4N57BA==",
+    "Azure.Storage.Queues/12.12.0-beta.1": {
+      "sha512": "BIlBa4gDj+h2MHY0cyZpYlwt6LeS8HM+ObBuoOVVK39RQnvPcj20lfkGefw+4wXQUJ8cFyVIa8vpQb3yhdepSA==",
       "type": "package",
-      "path": "azure.storage.queues/12.11.0",
+      "path": "azure.storage.queues/12.12.0-beta.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "CHANGELOG.md",
         "README.md",
-        "azure.storage.queues.12.11.0.nupkg.sha512",
+        "azure.storage.queues.12.12.0-beta.1.nupkg.sha512",
         "azure.storage.queues.nuspec",
         "azureicon.png",
         "lib/netstandard2.0/Azure.Storage.Queues.dll",
@@ -9417,9 +9417,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Azure.Storage.Blobs >= 12.13.0",
-      "Azure.Storage.Common >= 12.12.0",
       "Azure.Storage.Files.Shares >= 12.11.0",
-      "Azure.Storage.Queues >= 12.11.0",
       "Library >= 1.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.8",
       "StorageModels >= 1.0.0",
@@ -9481,15 +9479,7 @@
             "target": "Package",
             "version": "[12.13.0, )"
           },
-          "Azure.Storage.Common": {
-            "target": "Package",
-            "version": "[12.12.0, )"
-          },
           "Azure.Storage.Files.Shares": {
-            "target": "Package",
-            "version": "[12.11.0, )"
-          },
-          "Azure.Storage.Queues": {
             "target": "Package",
             "version": "[12.11.0, )"
           },
@@ -9523,16 +9513,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Detected package downgrade: Azure.Storage.Queues from 12.12.0-beta.1 to 12.11.0. Reference the package directly from the project to select a different version. \r\n StorageWebApp -> Library -> Azure.Storage.Queues (>= 12.12.0-beta.1) \r\n StorageWebApp -> Azure.Storage.Queues (>= 12.11.0)",
-      "libraryId": "Azure.Storage.Queues",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  }
 }

@@ -7,15 +7,6 @@
 
     public class StorageController : Controller
     {
-        public StorageInformation memoryStorageInformation { get; set; }
-
-        // GET: StorageController
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: StorageController/Create
         public ActionResult CreateContainer()
         {
             StorageInformation storageInformation = SessionUtil.GetSession(HttpContext);
@@ -63,8 +54,6 @@
         public async Task<ActionResult> CreateContainerPost(StorageInformation storageInfo)
         {
             SessionUtil.SetSessionStorage(storageInfo, HttpContext);
-
-            memoryStorageInformation = storageInfo;
             Library.StorageService storageService = new Library.StorageService();
             await storageService.CreateContainerAsync(storageInfo);
             return RedirectToAction("Index", "Home");

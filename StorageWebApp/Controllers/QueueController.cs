@@ -7,28 +7,22 @@ namespace StorageWebApp.Controllers
 {
     public class QueueController : Controller
     {
-        public const string SessionConnectionString = "_connstring";
-        public const string SessionContainer = "_container";
-
-        public StorageInformation memoryStorageInformation { get; set; }
-
-        // GET: StorageController
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: StorageController/Create
         public ActionResult CreateQueue()
         {
             var output = Util.SessionUtil.GetSessionQueue(HttpContext);
             return View(output);
         }
 
-
         public ActionResult InsertMessage()
         {
-            return View();
+            var output = Util.SessionUtil.GetSessionQueue(HttpContext);
+            return View(output);
+        }
+
+        public ActionResult ReadMessage()
+        {
+            var output = Util.SessionUtil.GetSessionQueue(HttpContext);
+            return View(output);
         }
 
         [HttpPost("CreateQueuePost")]
@@ -37,8 +31,7 @@ namespace StorageWebApp.Controllers
             Util.SessionUtil.SetSessionQueue(queueInformation, HttpContext);
             Library.QueueService queueService = new Library.QueueService();
             queueService. CreateQueue(queueInformation);
-
-            return View();       
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost("InsertMessagePost")]
@@ -47,19 +40,21 @@ namespace StorageWebApp.Controllers
             Util.SessionUtil.SetSessionQueue(queueInformation, HttpContext);
             Library.QueueService queueService = new Library.QueueService();
             queueService.InsertMessage(queueInformation);
-
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
+        [HttpPost("ReadMessagePost")]
+        public async Task<ActionResult> ReadMessagePost(QueueInformation queueInformation)
+        {
+            Util.SessionUtil.SetSessionQueue(queueInformation, HttpContext);
+            Library.QueueService queueService = new Library.QueueService();
+            string response = queueService.PeekMessage(queueInformation);
+            return RedirectToAction("Index", "Home");
+        }
 
         public ActionResult DeleteContainer()
         {
             return View();
-        }
-
-        public async Task<ActionResult> BlobsList()
-        {
-            return null;
         }
 
         // POST: StorageController/Create

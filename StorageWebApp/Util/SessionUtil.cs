@@ -101,7 +101,7 @@ namespace StorageWebApp.Util
                 QueueInformation queueInformation = new QueueInformation
                 {
                     ConnectionString = httpContext.Session.GetString(SessionConnectionString3),
-                    Message = httpContext.Session.GetString(SessionQueue)
+                    QueueName = httpContext.Session.GetString(SessionQueue)
                 };
 
                 return queueInformation;

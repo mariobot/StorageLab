@@ -1,24 +1,10 @@
-using Azure.Storage.Blobs.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StorageModels;
 
 namespace StorageWebApp.Controllers
 {
     public class TableController : Controller
-    {
-        public const string SessionConnectionString = "_connstringtable";
-        public const string SessiionTableName = "_tablename";
-
-        public StorageInformation memoryStorageInformation { get; set; }
-
-        // GET: StorageController
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: StorageController/Create
+    {   
         public ActionResult CreateTable()
         {
             var output = Util.SessionUtil.GetSessionTable(HttpContext);
