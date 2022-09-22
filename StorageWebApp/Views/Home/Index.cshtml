@@ -3,7 +3,18 @@
 }
 
 
-<p>this page is to test different Azure Storage Services.</p>
+<p>This page is to test different Azure Storage Services.</p>
+
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <img class="img-fluid" src="~/content/1 -JuFMm27iDN2ZKhzSKCBJA.jpeg" />
+    </div>
+    <div class="col-1"></div>
+</div>
+
+<br />
+<br />
 
 <div class="row">
     <div class="col-3">
@@ -30,6 +41,23 @@
         </ul>
     </div>
     <div class="col-3">
+        <h2>Queue</h2>
+        <ul>
+            <li>
+                <a asp-area="" asp-controller="Queue" asp-action="CreateQueue">Create Queue</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Queue" asp-action="InsertMessage">Insert Message</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Queue" asp-action="ReadMessage">Read Message</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Queue" asp-action="Index">Storage Information</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-3">
         <h2>Table</h2>
         <ul>
             <li>
@@ -46,23 +74,6 @@
             </li>
             <li>
                 <a asp-area="" asp-controller="Table" asp-action="GetItemsTable">Get items table</a>
-            </li>
-        </ul>
-    </div>
-    <div class="col-3">
-        <h2>Queue</h2>
-        <ul>
-            <li>
-                <a asp-area="" asp-controller="Queue" asp-action="CreateQueue">Create Queue</a>
-            </li>
-            <li>
-                <a asp-area="" asp-controller="Queue" asp-action="InsertMessage">Insert Message</a>
-            </li>
-            <li>
-                <a asp-area="" asp-controller="Queue" asp-action="ReadMessage">Read Message</a>
-            </li>
-            <li>
-                <a asp-area="" asp-controller="Queue" asp-action="Index">Storage Information</a>
             </li>
         </ul>
     </div>
