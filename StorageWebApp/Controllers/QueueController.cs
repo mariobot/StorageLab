@@ -25,6 +25,18 @@ namespace StorageWebApp.Controllers
             return View(output);
         }
 
+        public ActionResult UpdateMessage()
+        {
+            var output = Util.SessionUtil.GetSessionQueue(HttpContext);
+            return View(output);
+        }
+
+        public ActionResult DeleteMessage()
+        {
+            var output = Util.SessionUtil.GetSessionQueue(HttpContext);
+            return View(output);
+        }
+
         [HttpPost("CreateQueuePost")]
         public async Task<ActionResult> CreateQueuePost(QueueInformation queueInformation)
         {
@@ -49,6 +61,24 @@ namespace StorageWebApp.Controllers
             Util.SessionUtil.SetSessionQueue(queueInformation, HttpContext);
             Library.QueueService queueService = new Library.QueueService();
             string response = queueService.PeekMessage(queueInformation);
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost("ReadMessagePost")]
+        public async Task<ActionResult> UpdateMessagePost(QueueInformation queueInformation)
+        {
+            Util.SessionUtil.SetSessionQueue(queueInformation, HttpContext);
+            Library.QueueService queueService = new Library.QueueService();
+            queueService.UpdateMessage(queueInformation);
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost("ReadMessagePost")]
+        public async Task<ActionResult> DeleteMessagePost(QueueInformation queueInformation)
+        {
+            Util.SessionUtil.SetSessionQueue(queueInformation, HttpContext);
+            Library.QueueService queueService = new Library.QueueService();
+            queueService.DequeueMessage(queueInformation);
             return RedirectToAction("Index", "Home");
         }
 
