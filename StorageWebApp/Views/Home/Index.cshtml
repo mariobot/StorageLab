@@ -1,14 +1,11 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Azure Storage Lab";
 }
-
-
-<p>This page is to test different Azure Storage Services.</p>
 
 <div class="row">
     <div class="col-1"></div>
     <div class="col-10">
-        <img class="img-fluid" src="~/content/1 -JuFMm27iDN2ZKhzSKCBJA.jpeg" />
+        <img class="img-fluid" src="~/content/logoAzureStorage.jpg" />
     </div>
     <div class="col-1"></div>
 </div>
@@ -53,7 +50,10 @@
                 <a asp-area="" asp-controller="Queue" asp-action="ReadMessage">Read Message</a>
             </li>
             <li>
-                <a asp-area="" asp-controller="Queue" asp-action="Index">Storage Information</a>
+                <a asp-area="" asp-controller="Queue" asp-action="UpdateMessage">Update Message</a>
+            </li>
+            <li>
+                <a asp-area="" asp-controller="Queue" asp-action="DeleteMessage">Delete Message</a>
             </li>
         </ul>
     </div>
