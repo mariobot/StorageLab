@@ -64,7 +64,7 @@ namespace StorageWebApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost("ReadMessagePost")]
+        [HttpPost("UpdateMessagePost")]
         public async Task<ActionResult> UpdateMessagePost(QueueInformation queueInformation)
         {
             Util.SessionUtil.SetSessionQueue(queueInformation, HttpContext);
@@ -73,7 +73,7 @@ namespace StorageWebApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost("ReadMessagePost")]
+        [HttpPost("DelteMessagePost")]
         public async Task<ActionResult> DeleteMessagePost(QueueInformation queueInformation)
         {
             Util.SessionUtil.SetSessionQueue(queueInformation, HttpContext);
