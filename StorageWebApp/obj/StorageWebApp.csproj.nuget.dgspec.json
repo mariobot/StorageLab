@@ -1,33 +1,39 @@
 {
   "format": 1,
   "restore": {
-    "/workspaces/StorageLab/StorageWebApp/StorageWebApp.csproj": {}
+    "C:\\Desarrollo\\StorageLab\\StorageWebApp\\StorageWebApp.csproj": {}
   },
   "projects": {
-    "/workspaces/StorageLab/StorageLibrary/Library.csproj": {
+    "C:\\Desarrollo\\StorageLab\\StorageLibrary\\Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/StorageLab/StorageLibrary/Library.csproj",
+        "projectUniqueName": "C:\\Desarrollo\\StorageLab\\StorageLibrary\\Library.csproj",
         "projectName": "Library",
-        "projectPath": "/workspaces/StorageLab/StorageLibrary/Library.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/StorageLab/StorageLibrary/obj/",
+        "projectPath": "C:\\Desarrollo\\StorageLab\\StorageLibrary\\Library.csproj",
+        "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
+        "outputPath": "C:\\Desarrollo\\StorageLab\\StorageLibrary\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/natcp/auth/727291ab-5307-45eb-9b1e-9bcc5ea5cb18/api/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/workspaces/StorageLab/StorageModels/StorageModels.csproj": {
-                "projectPath": "/workspaces/StorageLab/StorageModels/StorageModels.csproj"
+              "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj": {
+                "projectPath": "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj"
               }
             }
           }
@@ -65,8 +71,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -75,27 +80,33 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/dotnet/6/sdk/6.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/workspaces/StorageLab/StorageModels/StorageModels.csproj": {
+    "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/StorageLab/StorageModels/StorageModels.csproj",
+        "projectUniqueName": "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj",
         "projectName": "StorageModels",
-        "projectPath": "/workspaces/StorageLab/StorageModels/StorageModels.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/StorageLab/StorageModels/obj/",
+        "projectPath": "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj",
+        "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
+        "outputPath": "C:\\Desarrollo\\StorageLab\\StorageModels\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/natcp/auth/727291ab-5307-45eb-9b1e-9bcc5ea5cb18/api/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -128,8 +139,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -138,37 +148,43 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/dotnet/6/sdk/6.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/workspaces/StorageLab/StorageWebApp/StorageWebApp.csproj": {
+    "C:\\Desarrollo\\StorageLab\\StorageWebApp\\StorageWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/StorageLab/StorageWebApp/StorageWebApp.csproj",
+        "projectUniqueName": "C:\\Desarrollo\\StorageLab\\StorageWebApp\\StorageWebApp.csproj",
         "projectName": "StorageWebApp",
-        "projectPath": "/workspaces/StorageLab/StorageWebApp/StorageWebApp.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/StorageLab/StorageWebApp/obj/",
+        "projectPath": "C:\\Desarrollo\\StorageLab\\StorageWebApp\\StorageWebApp.csproj",
+        "packagesPath": "C:\\Users\\mario\\.nuget\\packages\\",
+        "outputPath": "C:\\Desarrollo\\StorageLab\\StorageWebApp\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\mario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://www.myget.org/F/natcp/auth/727291ab-5307-45eb-9b1e-9bcc5ea5cb18/api/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/workspaces/StorageLab/StorageLibrary/Library.csproj": {
-                "projectPath": "/workspaces/StorageLab/StorageLibrary/Library.csproj"
+              "C:\\Desarrollo\\StorageLab\\StorageLibrary\\Library.csproj": {
+                "projectPath": "C:\\Desarrollo\\StorageLab\\StorageLibrary\\Library.csproj"
               },
-              "/workspaces/StorageLab/StorageModels/StorageModels.csproj": {
-                "projectPath": "/workspaces/StorageLab/StorageModels/StorageModels.csproj"
+              "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj": {
+                "projectPath": "C:\\Desarrollo\\StorageLab\\StorageModels\\StorageModels.csproj"
               }
             }
           }
@@ -206,8 +222,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -219,7 +234,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/dotnet/6/sdk/6.0.401/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
