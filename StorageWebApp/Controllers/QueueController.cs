@@ -73,106 +73,13 @@ namespace StorageWebApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost("DelteMessagePost")]
+        [HttpPost("DeleteMessagePost")]
         public async Task<ActionResult> DeleteMessagePost(QueueInformation queueInformation)
         {
             Util.SessionUtil.SetSessionQueue(queueInformation, HttpContext);
             Library.QueueService queueService = new Library.QueueService();
             queueService.DequeueMessage(queueInformation);
             return RedirectToAction("Index", "Home");
-        }
-
-        public ActionResult DeleteContainer()
-        {
-            return View();
-        }
-
-        // POST: StorageController/Create
-        [HttpPost("")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CreateContainerPost(StorageInformation storageInfo)
-        {
-            try
-            {
-                
-
-
-                return null;
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        [HttpPost("")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> UploadFilePost(StorageInformation storageInfo)
-        {
-            try
-            {
-                return null;
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        [HttpPost("")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteContainer(StorageInformation storageInfo)
-        {
-            try
-            {   
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StorageController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: StorageController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: StorageController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: StorageController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
