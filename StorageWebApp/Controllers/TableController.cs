@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
-using StorageModels;
-
 namespace StorageWebApp.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using StorageModels;
     public class TableController : Controller
     {   
         public ActionResult CreateTable()
@@ -38,8 +37,7 @@ namespace StorageWebApp.Controllers
             var result = await tableService.GetItemsTableAsync(tableInformation);
             return View(result);
         }
-
-        // POST: StorageController/Create
+        
         [HttpPost("CreateTablePost")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateTablePost(TableInformation tableInformation)

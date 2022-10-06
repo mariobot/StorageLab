@@ -1,10 +1,8 @@
-using Azure.Storage.Blobs.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using StorageModels;
-
 namespace StorageWebApp.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using StorageModels;
+
     public class QueueController : Controller
     {
         public ActionResult CreateQueue()

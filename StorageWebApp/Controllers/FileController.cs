@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.Mvc;
-using StorageWebApp.Models;
-using System.Diagnostics;
-
 namespace StorageWebApp.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+    using StorageWebApp.Models;
+    using System.Diagnostics;
+
     public class FileController : Controller
     {
         private readonly ILogger<HomeController> _logger;

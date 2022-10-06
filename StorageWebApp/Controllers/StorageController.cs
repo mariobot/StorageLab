@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
     using StorageModels;
     using Util;
-
     public class StorageController : Controller
     {
         public ActionResult CreateContainer()
